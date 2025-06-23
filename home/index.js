@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
-import { Picker } from '@react-native-picker/picker'; // use esta lib, não a do RN puro
+import { View, Text, TouchableOpacity, FlatList, Image, TextInput } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 import API from '../api/brapiApi';
 import styles from './style';
 import acoesDisponiveis from '../funcoes/fAcoes';
@@ -8,16 +8,18 @@ import acoesDisponiveis from '../funcoes/fAcoes';
 export default function Home() {
   const [cotacao, setCotacao] = useState(null);
   const [acaoSelecionada, setAcaoSelecionada] = useState(null);
-  const [opcaoSelecionada, setOpcaoSelecionada] = useState(''); // Estado do Picker
+  const [busca, setBusca] = useState(''); // valor digitado pelo usuário
+  const [acoesFiltradas, setAcoesFiltradas] = useState(acoesDisponiveis); // ações mostradas
 
-  // Atualiza a ação selecionada quando o usuário escolhe no Picker
+  // Atualiza a lista filtrada conforme o usuário digita
   useEffect(() => {
-    if (opcaoSelecionada) {
-      setAcaoSelecionada(opcaoSelecionada);
-    }
-  }, [opcaoSelecionada]);
+    const resultado = acoesDisponiveis.filter((acao) =>
+      acao.toLowerCase().includes(busca.toLowerCase())
+    );
+    setAcoesFiltradas(resultado);
+  }, [busca]);
 
-  // Busca a cotação da ação escolhida
+  // Sempre que a ação mudar, busca nova cotação
   useEffect(() => {
     if (acaoSelecionada) {
       buscarCotacao(acaoSelecionada);
@@ -27,7 +29,10 @@ export default function Home() {
   const buscarCotacao = async (ticker) => {
     try {
       const response = await API.get(`/quote/${ticker}`, {
-        params: { range: '1d', interval: '1d' }
+        params: {
+          range: '1d',
+          interval: '1d',
+        },
       });
       const dados = response.data.results[0];
       setCotacao(dados);
@@ -38,40 +43,66 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      {/* Cotação da ação selecionada */}
+      {/* Cabeçalho com imagem e botões */}
+      <View style={styles.espaco}></View>
+      <View style={styles.cabecario}>
+        <Image
+          style={styles.logoCabecario}
+          source={require('../assets/logoPrincipalGrande.png')}
+        />
+        <TouchableOpacity onPress={''}>
+          <Text style={styles.botao1}>Calculadora de Juros</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={''}>
+          <Text style={styles.botao2}>Calculadora de Juros</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Cotação */}
       <View style={styles.containerCotacao}>
         {cotacao ? (
           <View style={styles.infoCotacao}>
-                 <Image
-        style={styles.logoCotacao}
-        source={require('../assets/logoPrincipal.png')}
-      />
-          <View style={styles.infoCotacao2}>
-            <Text style={styles.label}>Nome da empresa: {cotacao.longName}</Text>
-            <Text style={styles.label}>Ação: {cotacao.symbol}</Text>
-            <Text style={styles.label}>Preço Atual: R$ {cotacao.regularMarketPrice}</Text>
-            <Text style={styles.label}>Variação: {cotacao.regularMarketChangePercent}%</Text>
-          </View>
+            {cotacao.logourl && (
+              <View style={styles.logoCotacao}>
+                <SvgUri uri={cotacao.logourl} />
+              </View>
+            )}
+            <View style={styles.infoCotacao2}>
+              <Text style={styles.label}>Nome da empresa: {cotacao.longName}</Text>
+              <Text style={styles.label}>Ação: {cotacao.symbol}</Text>
+              <Text style={styles.label}>Preço Atual: R$ {cotacao.regularMarketPrice}</Text>
+              <Text style={styles.label}>Variação: {cotacao.regularMarketChangePercent}%</Text>
+            </View>
           </View>
         ) : (
-          <Text style={styles.label}>Nenhuma ação selecionada.</Text>
+        <Text style={styles.label2}>Nenhuma ação selecionada.</Text>
         )}
       </View>
 
-      {/* Seletor com Picker */}
+      {/* Campo de busca e lista filtrada */}
       <View style={styles.containerBotao}>
-        <Text style={styles.titulo}>Selecione uma Ação</Text>
+        <Text style={styles.titulo}>Buscar Ação</Text>
+        <TextInput
+          placeholder="Digite o nome da ação (ex: PETR4)"
+          value={busca}
+          onChangeText={setBusca}
+          style={styles.inputBusca}
+          placeholderTextColor="white"
+        />
 
-        <Picker
-          selectedValue={opcaoSelecionada}
-          onValueChange={(itemValue) => setOpcaoSelecionada(itemValue)}
-          style={styles.picker}
-        >
-          <Picker.Item label="Escolha uma ação..." value="" />
-          {acoesDisponiveis.map((acao) => (
-            <Picker.Item key={acao} label={acao} value={acao} />
-          ))}
-        </Picker>
+        <FlatList
+          data={acoesFiltradas}
+          keyExtractor={(item) => item}
+          style={styles.lista}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.itemLista}
+              onPress={() => setAcaoSelecionada(item)}
+            >
+              <Text style={styles.itemTexto}>{item}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </View>
   );
