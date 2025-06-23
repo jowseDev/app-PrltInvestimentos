@@ -1,0 +1,26 @@
+import axios from 'axios';
+const ACOES  = axios.create({
+    const acoes = [
+  'ITUB4', 'BBDC4', 'BBAS3', 'SANB11', 'BPAC11',
+  'ABCB4', 'BMGB4', 'BRSR6', 'BNBR3', 'BPAN4',
+  'PINE4', 'BAZA3', 'BGIP4', 'BMEB4', 'BRBI11',
+  'MODL11','TAEE11', 'CMIG4', 'ISAE4', 'AURE3', 'EGIE3',
+  'CPLE6', 'CPFE3', 'NEOE3', 'ALUP11', 'ELET3',
+  'CEBR3', 'EQTL3', 'EKTR3', 'ELET6', 'ENBR3',
+  'RNEW4', 'EMAE4', 'COCE5', 'TRPL4', 'CLSC3',
+  'ENMT4', 'SRNA3', 'AFLT3','MGLU3', 'LREN3', 'AMER3', 'AZZA3', 'SBFG3',
+  'SOMA3', 'RADL3', 'ASAI3', 'PETZ3', 'CRFB3',
+  'GMAT3', 'VIVA3', 'MELI34', 'BHIA3', 'CCRO3',
+  'CVCB3', 'WEST3', 'MBLY3', 'ESPA3', 'TTEN3',
+  'DOTZ3', 'GOLL4', 'AZUL4', 'CAML3', 'CGRU3',
+  'CRUZ3', 'QUAL3','TOTS3', 'LWSA3', 'INTB3', 'POSI3', 'COGN3',
+  'CIEL3', 'BTOW3', 'NETC3', 'RDCD3', 'ORDI3',
+  'TELB3', 'CLSC3', 'KEPL3', 'MLAS3', 'GNDI3',
+  'NEOE3', 'AERI3', 'ISA','VALE3', 'BRAP4', 'CMIN3', 'GGBR4', 'USIM5',
+  'CSAN3', 'KLBN11', 'RANI3', 'BRKM5', 'SUZB3',
+  'GOAU4', 'CSNA3', 'BRFS3', 'JBSS3', 'BEEF3',
+  'FESA4', 'SLCE3', 'BRAP4', 'KLBN11', 'BRAP4'
+    ];
+});
+
+export default ACOES;
