@@ -29,7 +29,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  infoCotacao: {
+  logoCotacao:{
+    height: 100,
+    width: 100,
+  },
+  infoCotacao:{
     marginTop: 30,
     padding: 16,
     borderRadius: 8,
@@ -38,6 +42,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  infoCotacao2: {
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: '#ffffff',
   },
   label: {
     fontSize: 16,
@@ -49,7 +60,17 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     padding: 12,
 
-  }
+  },
+  picker: {
+  backgroundColor: '#fff',
+  marginTop: 10,
+  borderWidth: 1,
+  borderColor: '#ccc',
+  borderRadius: 8,
+  height: 50,
+  paddingHorizontal: 10,
+},
+
 });
 
 export default styles;
