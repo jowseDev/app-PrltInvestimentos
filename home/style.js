@@ -2,9 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     paddingVertical: 20,
-    alignItems: 'center',
     paddingHorizontal: 16,
     backgroundColor: '#f0f4f8',
   },
@@ -44,6 +42,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 6,
+  },
+  containerBotao: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    alignContent: 'center',
+    padding: 12,
+
   }
 });
 
