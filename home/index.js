@@ -104,6 +104,18 @@ export default function Home() {
           )}
         />
       </View>
+    <View style={styles.conteudoHome}>
+        <Image
+          style={styles.logoConteudo}
+          source={require('../assets/logoPrincipalGrande.png')}
+        />
+          <View style={styles.conteudoHomeDescricao}>
+          <Text style={styles.tituloConteudo}>Projeto Prlt Investimentos</Text>
+          <Text style={styles.textoConteudo}>Prlt Investimentos é uma plataforma moderna, intuitiva e acessível — desenvolvida como site e aplicativo mobile — com o objetivo de ajudar pessoas de todos os perfis a darem os primeiros passos no mundo dos investimentos. A ferramenta permite visualizar o valor das cotas de ações, calcular juros compostos de forma prática e montar uma carteira de investimentos personalizada. Focamos em educação financeira, autonomia e decisões inteligentes para quem quer investir com mais segurança.</Text>
+          </View>
+
+    </View>
+
     </View>
   );
 }

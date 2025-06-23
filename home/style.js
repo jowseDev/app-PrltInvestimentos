@@ -125,5 +125,18 @@ itemTexto: {
   fontSize: 16,
   color: '#333',
 },
+conteudoHome:{
+flexDirection: 'row',
+backgroundColor: 'white',
+alignItems: 'conter',
+padding: 10,
+},
+conteudoHomeDescricao:{
+color: 'white',
+},
+  logoConteudo:{
+  height: 85,
+  width: 85,
+  },
 });
 export default styles;
