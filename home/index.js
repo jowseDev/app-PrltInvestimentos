@@ -4,7 +4,7 @@ import { SvgUri } from 'react-native-svg';
 import API from '../api/brapiApi';
 import styles from './style';
 import acoesDisponiveis from '../funcoes/fAcoes';
-
+import Carrossel from '../funcoes/fCarrossel';
 export default function Home() {
   const [cotacao, setCotacao] = useState(null);
   const [acaoSelecionada, setAcaoSelecionada] = useState(null);
@@ -56,8 +56,15 @@ export default function Home() {
         <TouchableOpacity onPress={''}>
           <Text style={styles.botao2}>Calculadora de Juros</Text>
         </TouchableOpacity>
-      </View>
 
+        
+         </View>
+
+        <View style={styles.containerCarrossel}>
+          <Carrossel />
+        </View>
+        
+          
       {/* Cotação */}
       <View style={styles.containerCotacao}>
         {cotacao ? (

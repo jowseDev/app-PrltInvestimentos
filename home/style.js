@@ -112,6 +112,7 @@ inputBusca: {
   marginBottom: 12,
   borderWidth: 1,
   borderColor: 'white',
+  color:'white',
 },
 itemLista: {
   padding: 12,
@@ -128,15 +129,34 @@ itemTexto: {
 conteudoHome:{
 flexDirection: 'row',
 backgroundColor: 'white',
-alignItems: 'conter',
+alignItems: 'center',
 padding: 10,
 },
 conteudoHomeDescricao:{
 color: 'white',
+padding: 11,
 },
   logoConteudo:{
   height: 85,
   width: 85,
   },
+ tituloConteudo: {
+  fontSize: 20,
+  fontWeight: 'bold',
+  color: '#151515',
+  marginBottom: 10,
+},
+
+textoConteudo: {
+  fontSize: 16,
+  color: '#333',
+  textAlign: 'justify',
+},
+containerCarrossel: {
+  marginTop: 20,
+  paddingHorizontal: 16,
+  backgroundColor: '#151515',
+},
+
 });
 export default styles;

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// aqruvio .env
 const TOKEN = '9xfqW2GMuUye7uT5atR4Bo';
 
 const API = axios.create({
