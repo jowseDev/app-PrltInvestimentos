@@ -1,13 +1,11 @@
 import axios from 'axios';
-
-// aqruvio .env
-const TOKEN = '9xfqW2GMuUye7uT5atR4Bo';
+import { API_TOKEN } from '@env';
 
 const API = axios.create({
   baseURL: 'https://brapi.dev/api',
   headers: {
-    'Authorization': TOKEN
-  }
+    'Authorization': API_TOKEN,
+  },
 });
 
 export default API;
